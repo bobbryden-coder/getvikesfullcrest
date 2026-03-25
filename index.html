@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UVRC Kit Shop — Official Vikes Rowing Apparel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1a3a8f;
+      --gold: #f5c200;
+      --white: #ffffff;
+      --off: #f4f2ee;
+      --dark: #0d1f4e;
+    }
+
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--off);
+      color: var(--dark);
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5vw;
+      height: 64px;
+    }
+    nav .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      color: var(--white);
+      letter-spacing: 0.08em;
+    }
+    nav .logo span { color: var(--gold); }
+    nav .tagline {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(100vh - 64px);
+    }
+
+    .hero-image {
+      background: linear-gradient(160deg, var(--navy) 0%, var(--dark) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-image::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 40px,
+        rgba(245,194,0,0.04) 40px,
+        rgba(245,194,0,0.04) 41px
+      );
+    }
+    .hero-image img {
+      max-height: 80vh;
+      max-width: 100%;
+      object-fit: contain;
+      position: relative;
+      z-index: 1;
+      filter: drop-shadow(0 30px 60px rgba(0,0,0,0.5));
+      animation: float 4s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 6vw 80px 5vw;
+      background: var(--off);
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--dark);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      margin-bottom: 28px;
+      width: fit-content;
+    }
+
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 5vw, 5rem);
+      line-height: 0.95;
+      color: var(--navy);
+      letter-spacing: 0.02em;
+      margin-bottom: 12px;
+    }
+    h1 span { color: var(--gold); }
+
+    .subtitle {
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 40px;
+      max-width: 400px;
+    }
+
+    /* ── SPECS ── */
+    .specs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 44px;
+    }
+    .spec {
+      background: white;
+      border-left: 3px solid var(--gold);
+      padding: 14px 16px;
+    }
+    .spec-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #999;
+      margin-bottom: 4px;
+    }
+    .spec-value {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    /* ── CTA ── */
+    .cta-block { display: flex; flex-direction: column; gap: 16px; }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.25rem;
+      letter-spacing: 0.15em;
+      padding: 18px 36px;
+      text-decoration: none;
+      text-align: center;
+      transition: background 0.2s, transform 0.15s;
+      border: 2px solid var(--navy);
+    }
+    .btn-primary:hover {
+      background: var(--gold);
+      color: var(--dark);
+      border-color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .order-note {
+      font-size: 0.78rem;
+      color: #888;
+      line-height: 1.5;
+    }
+    .order-note strong { color: var(--navy); }
+
+    /* ── STRIPE ── */
+    .stripe {
+      background: var(--navy);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 60px;
+      padding: 28px 5vw;
+      flex-wrap: wrap;
+    }
+    .stripe-item {
+      text-align: center;
+    }
+    .stripe-item .num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+    }
+    .stripe-item .lbl {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-top: 4px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      padding: 24px;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-image { min-height: 55vw; padding: 40px 20px; }
+      .hero-content { padding: 50px 6vw; }
+      .specs { grid-template-columns: 1fr; }
+      .stripe { gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">UVRC <span>Kit</span> Shop</div>
+    <div class="tagline">University of Victoria Rowing Club · Est. 1965</div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-image">
+      <img src="uni.png" alt="UVRC Unisuit — Blue, Gold & White" />
+    </div>
+
+    <div class="hero-content">
+      <div class="badge">Limited Edition · 2025</div>
+      <h1>VIKES<br><span>UNISUIT</span></h1>
+      <p class="subtitle">
+        Full-crest sublimated race unisuit in the official UVRC blue, gold, and white.
+        Custom-made to order — built for competition, made for the Vikes.
+      </p>
+
+      <div class="specs">
+        <div class="spec">
+          <div class="spec-label">Club</div>
+          <div class="spec-value">UVic Rowing Club</div>
+        </div>
+        <div class="spec">
+          <div class="spec-label">Style</div>
+          <div class="spec-value">Full Crest Sublimated</div>
+        </div>
+        <div class="spec">
+          <div class="spec-label">Colours</div>
+          <div class="spec-value">Navy · Gold · White</div>
+        </div>
+        <div class="spec">
+          <div class="spec-label">Sizing</div>
+          <div class="spec-value">XS – 3XL Available</div>
+        </div>
+      </div>
+
+      <div class="cta-block">
+        <a class="btn-primary" href="mailto:vikesfullcrest@gmail.com?subject=Unisuit%20Order%20Request&body=Hi%2C%20I%27d%20like%20to%20order%20a%20UVRC%20unisuit.%0A%0AName%3A%0ASize%3A%0AQuantity%3A%0AContact%20number%3A%0A%0AThank%20you!">
+          → Request to Order
+        </a>
+        <p class="order-note">
+          Email <strong>vikesfullcrest@gmail.com</strong> directly with your name, size, and quantity.
+          We'll confirm availability and pricing within 48 hours.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="stripe">
+    <div class="stripe-item">
+      <span class="num">100%</span>
+      <div class="lbl">Sublimated Print</div>
+    </div>
+    <div class="stripe-item">
+      <span class="num">XS–3XL</span>
+      <div class="lbl">Size Range</div>
+    </div>
+    <div class="stripe-item">
+      <span class="num">1965</span>
+      <div class="lbl">Club Founded</div>
+    </div>
+    <div class="stripe-item">
+      <span class="num">48h</span>
+      <div class="lbl">Response Time</div>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 UVRC Kit Shop &nbsp;·&nbsp; <a href="mailto:vikesfullcrest@gmail.com">vikesfullcrest@gmail.com</a>
+  </footer>
+
+</body>
+</html>
